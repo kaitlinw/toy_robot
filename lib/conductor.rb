@@ -2,6 +2,10 @@ require 'require_all'
 require_all 'lib'
 
 class Conductor
+  def initialize
+    setup_game
+  end
+
   def instructions
     puts ""
     puts "Welcome to Toy Robot! I am the Conductor."
@@ -24,5 +28,12 @@ class Conductor
     puts ""
     puts "Happy gaming!"
     puts ""
+  end
+
+  private
+
+  def setup_game
+    @board = Board.new
+    @robot = Robot.new(@board)
   end
 end
