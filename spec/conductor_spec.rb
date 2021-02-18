@@ -40,6 +40,14 @@ describe Conductor do
       end
     end
 
+    context 'when input is REPORT' do
+      it 'calls robot method report' do
+        expect(conductor.robot).to receive(:report_state)
+        conductor.handle_request('PLACE 1 0 EAST')
+        conductor.handle_request('REPORT')
+      end
+    end
+
     context 'when input is anything else' do
       it 'returns an error message' do
         conductor.handle_request('PLACE 1 0 EAST')

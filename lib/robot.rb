@@ -48,6 +48,10 @@ class Robot
     set_direction(@directions[@directions.index(@facing).to_i - 1])
   end
 
+  def report_state
+    puts "Your robot is at location [#{@position_x}, #{@position_y}] facing #{@facing}."
+  end
+
   private
 
   def set_direction(facing)

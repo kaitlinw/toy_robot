@@ -99,4 +99,16 @@ describe Robot do
       expect(robot.turn_left).to eq 'NORTH'
     end
   end
+
+  context '#report_state' do
+    it 'return the position statement of the robot' do
+      robot.place(['PLACE', '1', '3', 'WEST'])
+
+      msg = <<~MSG
+      Your robot is at location [#{robot.position_x}, #{robot.position_y}] facing #{robot.facing}.
+      MSG
+
+      expect{ robot.report_state }.to output(msg).to_stdout
+    end
+  end
 end

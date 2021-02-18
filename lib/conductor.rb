@@ -47,6 +47,8 @@ class Conductor
         return @robot.turn_left
       when "RIGHT"
         return @robot.turn_right
+      when "REPORT"
+        return @robot.report_state if @initial_placement
       else
         return puts "Please include valid input. Type 'help' for instructions." if @initial_placement
       end
