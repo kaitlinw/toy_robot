@@ -83,4 +83,20 @@ describe Robot do
       end
     end
   end
+
+  context '#turn_right' do
+    it 'changes the direction facing' do
+      robot.place(['PLACE', '1', '0', 'EAST'])
+
+      expect(robot.turn_right).to eq 'SOUTH'
+    end
+  end
+
+  context '#turn_left' do
+    it 'changes the direction facing' do
+      robot.place(['PLACE', '1', '0', 'EAST'])
+
+      expect(robot.turn_left).to eq 'NORTH'
+    end
+  end
 end

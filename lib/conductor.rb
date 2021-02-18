@@ -43,6 +43,10 @@ class Conductor
         return @robot.place(@input_array)
       when "MOVE"
         return @robot.move
+      when "LEFT"
+        return @robot.turn_left
+      when "RIGHT"
+        return @robot.turn_right
       else
         return puts "Please include valid input. Type 'help' for instructions." if @initial_placement
       end

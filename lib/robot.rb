@@ -40,6 +40,14 @@ class Robot
     end
   end
 
+  def turn_right
+    set_direction(@directions[@directions.index(@facing).to_i + 1])
+  end
+
+  def turn_left
+    set_direction(@directions[@directions.index(@facing).to_i - 1])
+  end
+
   private
 
   def set_direction(facing)

@@ -22,6 +22,24 @@ describe Conductor do
       end
     end
 
+    context 'when input is LEFT' do
+      it 'calls robot method left' do
+        input = 'LEFT'
+
+        expect(conductor.robot).to receive(:turn_left)
+        conductor.handle_request(input)
+      end
+    end
+
+    context 'when input is RIGHT' do
+      it 'calls robot method right' do
+        input = 'RIGHT'
+
+        expect(conductor.robot).to receive(:turn_right)
+        conductor.handle_request(input)
+      end
+    end
+
     context 'when input is anything else' do
       it 'returns an error message' do
         conductor.handle_request('PLACE 1 0 EAST')
