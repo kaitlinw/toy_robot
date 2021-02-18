@@ -1,9 +1,10 @@
 class Robot
   attr_accessor :position_x, :position_y, :facing, :board, :name_of_robot
 
-  def initialize(board)
+  def initialize(board, name_of_robot = choose_robot_name)
     @directions = ["NORTH", "EAST", "SOUTH", "WEST"]
     @board = board
+    @name_of_robot = name_of_robot
   end
 
   def place(input_array)
@@ -49,7 +50,7 @@ class Robot
   end
 
   def report_state
-    puts "Your robot is at location [#{@position_x}, #{@position_y}] facing #{@facing}."
+    puts "Your robot, #{@name_of_robot}, is at location [#{@position_x}, #{@position_y}] facing #{@facing}."
   end
 
   private
@@ -61,5 +62,9 @@ class Robot
   def set_position(position_x, position_y)
     @position_x = position_x
     @position_y = position_y
+  end
+
+  def choose_robot_name
+    ["R2-D2", "HAL", "Gerty", "Bender", "AWESOME-O", "Marvin", "Johnny 5", "Maria"].sample()
   end
 end

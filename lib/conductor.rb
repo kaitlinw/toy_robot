@@ -28,6 +28,8 @@ class Conductor
     puts "type 'help' if you need to view these instructions again"
     puts "type 'exit' to exit the game"
     puts ""
+    puts "Your robot's name is: #{robot.name_of_robot}. Say hi."
+    puts ""
     puts "Happy gaming!"
     puts ""
   end

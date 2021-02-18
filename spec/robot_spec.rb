@@ -3,7 +3,7 @@ require_all 'lib'
 
 describe Robot do
   let(:board) { Board.new }
-  let(:robot) { Robot.new(board) }
+  let(:robot) { Robot.new(board, 'HAL') }
 
   context '#place' do
     context 'invalid input' do
@@ -105,7 +105,7 @@ describe Robot do
       robot.place(['PLACE', '1', '3', 'WEST'])
 
       msg = <<~MSG
-      Your robot is at location [#{robot.position_x}, #{robot.position_y}] facing #{robot.facing}.
+      Your robot, HAL, is at location [#{robot.position_x}, #{robot.position_y}] facing #{robot.facing}.
       MSG
 
       expect{ robot.report_state }.to output(msg).to_stdout
