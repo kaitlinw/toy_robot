@@ -13,6 +13,15 @@ describe Conductor do
       end
     end
 
+    context 'when input is MOVE' do
+      it 'calls robot method move' do
+        input = 'MOVE'
+
+        expect(conductor.robot).to receive(:move)
+        conductor.handle_request(input)
+      end
+    end
+
     context 'when input is anything else' do
       it 'returns an error message' do
         conductor.handle_request('PLACE 1 0 EAST')

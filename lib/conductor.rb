@@ -41,6 +41,8 @@ class Conductor
       case word
       when "PLACE"
         return @robot.place(@input_array)
+      when "MOVE"
+        return @robot.move
       else
         return puts "Please include valid input. Type 'help' for instructions." if @initial_placement
       end

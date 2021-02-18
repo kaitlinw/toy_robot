@@ -1,4 +1,6 @@
 class Robot
+  attr_accessor :position_x, :position_y, :facing, :board, :name_of_robot
+
   def initialize(board)
     @directions = ["NORTH", "EAST", "SOUTH", "WEST"]
     @board = board
@@ -17,6 +19,25 @@ class Robot
 
     return puts error_message_direction if direction.empty?
     set_direction(direction.first)
+  end
+
+  def move
+    error_message = "Sorry you can not make this move. Please choose a different direction."
+
+    case @facing
+    when "NORTH"
+      return @position_y += 1 if @board.is_position_allowed?(@position_x, @position_y + 1)
+      puts error_message
+    when "SOUTH"
+      return @position_y -= 1 if @board.is_position_allowed?(@position_x, @position_y -1)
+      puts error_message
+    when "EAST"
+      return @position_x += 1 if @board.is_position_allowed?(@position_x + 1, @position_y)
+      puts error_message
+    when "WEST"
+      return @position_x -= 1 if @board.is_position_allowed?(@position_x - 1, @position_y)
+      puts error_message
+    end
   end
 
   private
