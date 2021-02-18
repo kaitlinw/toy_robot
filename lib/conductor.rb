@@ -2,6 +2,8 @@ require 'require_all'
 require_all 'lib'
 
 class Conductor
+  attr_accessor :robot
+
   def initialize
     setup_game
   end
@@ -32,6 +34,17 @@ class Conductor
 
   def handle_request(input)
     @initial_placement ||= validate_game_start?(input)
+
+    @input_array = input.split
+
+    @input_array.map do |word|
+      case word
+      when "PLACE"
+        return @robot.place(@input_array)
+      else
+        return puts "Please include valid input. Type 'help' for instructions." if @initial_placement
+      end
+    end
   end
 
   private
