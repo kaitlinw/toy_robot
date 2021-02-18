@@ -30,10 +30,23 @@ class Conductor
     puts ""
   end
 
+  def handle_request(input)
+    @initial_placement ||= validate_game_start?(input)
+  end
+
   private
 
   def setup_game
     @board = Board.new
     @robot = Robot.new(@board)
+  end
+
+  def validate_game_start?(input)
+    error_message = "Please type 'PLACE' to start the game followed by the direction and x and y coordinates for your robot.
+    E.g. place 2 1 south
+    "
+
+    return true if input.include?("PLACE")
+    puts error_message
   end
 end
