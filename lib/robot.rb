@@ -42,11 +42,19 @@ class Robot
   end
 
   def turn_right
-    set_direction(@directions[@directions.index(@facing).to_i + 1])
+    facing = @directions.index(@facing).to_i
+
+    facing = (facing + 1) % 4
+
+    set_direction(@directions[facing])
   end
 
   def turn_left
-    set_direction(@directions[@directions.index(@facing).to_i - 1])
+    facing = @directions.index(@facing).to_i
+
+    facing = (facing - 1) % 4
+
+    set_direction(@directions[facing])
   end
 
   def report_state
@@ -56,7 +64,7 @@ class Robot
   private
 
   def set_direction(facing)
-    @facing = @directions.find { |direction| direction == facing }
+    @facing = facing
   end
 
   def set_position(position_x, position_y)
