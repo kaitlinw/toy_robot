@@ -61,6 +61,21 @@ class Robot
     puts "Your robot, #{@name_of_robot}, is at location [#{@position_x}, #{@position_y}] facing #{@facing}."
   end
 
+  def place_object
+    case @facing
+    when "NORTH"
+      coordinates = [@position_x, @position_y + 1]
+    when "SOUTH"
+      coordinates = [@position_x, @position_y - 1]
+    when "EAST"
+      coordinates = [@position_x + 1, @position_y]
+    when "WEST"
+      coordinates = [@position_x - 1, @position_y]
+    end
+
+    @board.restricted_tiles(coordinates)
+  end
+
   private
 
   def set_direction(facing)

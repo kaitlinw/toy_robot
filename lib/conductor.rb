@@ -49,6 +49,8 @@ class Conductor
         return @robot.turn_left
       when "RIGHT"
         return @robot.turn_right
+      when "PLACE_OBJECT"
+        return @robot.place_object
       when "REPORT"
         return @robot.report_state if @initial_placement
       else
